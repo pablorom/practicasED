@@ -6,5 +6,4 @@ struct Celda{
     int max;
 };
 
-
 #endif // Celda_h
