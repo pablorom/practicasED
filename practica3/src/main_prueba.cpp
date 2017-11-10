@@ -1,21 +1,24 @@
-#include "Pila_max_VD.h"
+#include "Pila_max_cola.h"
 #include <iostream>
 
 using namespace std;
 
 int main(){
-	PilaMaxVD pila;
+
+	PilaMaxCola pila, otra_pila;
 	int x;
+
 
 	for(int i = 0; i < 10; i++){
 		cin >> x;
 		pila.poner(x);
 	}
-	while(!pila.vacio()){
-		cout << pila.elementoTope();
-		cout << "->max: " << pila.maximo() << endl;
-		pila.quitar();
-	}
+
+	otra_pila = pila;
+
+	cout << pila;
+	cout << otra_pila;
+
 
 
 }

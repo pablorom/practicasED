@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['getnumeventos',['getNumEventos',['../classFechaHistorica.html#afb95802d94856b35b6e143ab97f27330',1,'FechaHistorica']]],
-  ['getnumfechas',['getNumFechas',['../classCronologia.html#a98adfefe70b38553c251bff4f05cabdd',1,'Cronologia']]]
+  ['operator_3d',['operator=',['../classCola.html#a2ac480681dec95b8ffeea075507849e2',1,'Cola']]]
 ];

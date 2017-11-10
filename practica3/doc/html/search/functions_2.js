@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cronologia',['Cronologia',['../classCronologia.html#ac0026b1919148f6cd6cf4ca4c357771e',1,'Cronologia::Cronologia()'],['../classCronologia.html#abb64362cb1835ef24028ce5067a1a2f4',1,'Cronologia::Cronologia(string nombre)']]]
+  ['frente',['frente',['../classCola.html#a1df4ad2b50116ef22e77ad3f77b02d29',1,'Cola::frente()'],['../classCola.html#a79aa911410e9698d255cb00acee7b365',1,'Cola::frente() const ']]]
 ];

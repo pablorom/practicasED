@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['aniadirevento',['aniadirEvento',['../classFechaHistorica.html#a733e35a06a95f470721fdb3bbd2630b6',1,'FechaHistorica']]],
-  ['aniadirfecha',['aniadirFecha',['../classCronologia.html#a2bb77cf36026e5eeaaeab1517356e5e3',1,'Cronologia']]]
+  ['cola',['Cola',['../classCola.html#aea3a971c7c522618f4dc972e8b4ff153',1,'Cola::Cola()'],['../classCola.html#a2249ab5603a92fddb8bd9bb55abeaa24',1,'Cola::Cola(const Cola&lt; T &gt; &amp;original)']]]
 ];

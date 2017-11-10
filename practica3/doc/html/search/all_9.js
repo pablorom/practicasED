@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['periodoentre',['periodoEntre',['../classCronologia.html#a387f8b1b85222f551bf290d679e98af4',1,'Cronologia']]]
+  ['_7ecola',['~Cola',['../classCola.html#af4d55930921c93c626006ba2e842530b',1,'Cola']]]
 ];

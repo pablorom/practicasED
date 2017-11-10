@@ -1,30 +1,71 @@
+#ifndef PilaMaxCola_h
+#define PilaMaxCola_h
 
-#ifndef __Pila_max_H__
-#define __Pila_max_H__
-#include "cola.h"
+#include <iostream>
 #include "Celda.h"
-#include <cassert>
+#include "cola.h"
+
+using namespace std;
 
 class PilaMaxCola{
-  private:
-    Cola<Celda> pila;
-    int num_elem;
 
-  public:
+private:
+    
+    Cola <Celda> pila;
+    int num_celdas;
     /**
-    *@brief Constructor por defecto
+    * @brief Consultar la celda almacenada en el tope de la pila
+    * @return Devuelve el valor almacenado en el tope
+    */
+
+public:
+
+    /** 
+    * @brief Constructor por defecto
     */
     PilaMaxCola();
-    /**
-    *@brief Constructor de copia
-    *@param pila_a_copiar Pila de la que va a copiar
+    /** 
+    * @brief Constructor de copia
+    * @param otraPila 
     */
-    PilaMaxCola(const PilaMaxCola pila_a_copiar);
-    /**
-    *@brief Destructor
-    */
-    ~PilaMaxCola();
+    //Constructor de copia
+    PilaMaxCola(const PilaMaxCola &otra_pila);
+
+    int getNumElementos();
+
+    void copiar(const PilaMaxCola &otra_pila);
+
+    PilaMaxCola& operator=(const PilaMaxCola &otra_pila);
 
 
-}
-#endif
+    /**
+    * @brief Poner en la ultima posicion
+    * @param a_introducir
+    */
+    void poner(int a_introducir);
+    /**
+    * @brief Eliminar tope de la pila
+    */
+    void quitar();
+
+    Celda tope() const;
+
+    /**
+    * @brief Consultar el entero almacenado en la celda tope
+    * @return Devuelve el entero tope
+    */
+    int elementoTope() const;
+    /**
+    * @brief Devuelve el maximo 
+    * @return Devuelve el maximo de toda la pila
+    */
+    int maximo() const;
+
+    bool vacio() const;
+
+    friend ostream& operator<<(ostream &flujo, const PilaMaxCola &una_pila);
+
+};
+
+
+#endif // PilaMaxCola_h
