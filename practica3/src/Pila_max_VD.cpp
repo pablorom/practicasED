@@ -9,10 +9,6 @@ PilaMaxVD::PilaMaxVD(const PilaMaxVD &otra_pila){
 	this->copiar(otra_pila);
 }
 
-void PilaMaxVD::getNumElementos(){
-	return num_celdas;
-}
-
 void PilaMaxVD::copiar(const PilaMaxVD &otra_pila){
 	this->pila = otra_pila.pila;
 	this->num_celdas = otra_pila.num_celdas;
@@ -21,6 +17,8 @@ void PilaMaxVD::copiar(const PilaMaxVD &otra_pila){
 PilaMaxVD& PilaMaxVD::operator=(const PilaMaxVD &otra_pila){
 	this->num_celdas = otra_pila.num_celdas;
 	this->pila = otra_pila.pila;
+
+	return *this;
 }
 
 void PilaMaxVD::poner(int a_introducir){

@@ -1,11 +1,11 @@
-#include "Pila_max_cola.h"
+#include "Pila_max.h"
 #include <iostream>
 
 using namespace std;
 
 int main(){
 
-	PilaMaxCola pila, otra_pila;
+	Pila_max pila, otra_pila;
 	int x;
 
 
