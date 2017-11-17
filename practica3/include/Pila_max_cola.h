@@ -1,5 +1,18 @@
-#ifndef PilaMaxCola_h
-#define PilaMaxCola_h
+/**
+* @class PilaMax
+*
+* @brief Clase que posee todos los metodos basicos 
+* de una pila impleventada con una cola.
+* 
+* Definicion: PilaMax representa una pila y todas sus funcionalidades básicas implementada internamente con una cola.
+*
+* @author Ignacio Martinez, Miguel Moraga, Pablo Robles
+*
+* @date 13/11/2017
+*
+*/
+#ifndef Pila_max_cola_h
+#define Pila_max_cola_h
 
 #include <iostream>
 #include "Celda.h"
@@ -7,7 +20,7 @@
 
 using namespace std;
 
-class PilaMaxCola{
+class PilaMax{
 
 private:
     
@@ -19,24 +32,30 @@ public:
     /** 
     * @brief Constructor por defecto
     */
-    PilaMaxCola();
+    PilaMax();
     /** 
     * @brief Constructor de copia
     * @param otraPila 
     */
-    PilaMaxCola(const PilaMaxCola &otra_pila);
+    PilaMax(const PilaMax &otra_pila);
+
+    /** 
+    * @brief Consultar numero de elementos de la pila
+    * @return un entero como numero de elementos de la pila 
+    */
+    int getNumElementos();
 
     /**
     * @brief Copia los valores de una pila en otra
     * @param otra_pila recibe como parametro un objeto pila por referencia
     */
-    void copiar(const PilaMaxCola &otra_pila);
+    void copiar(const PilaMax &otra_pila);
     /** 
     * @brief Operador para igualar dos pilas
     * @param otra_pila recibe como parametro otra pila con la que igualar
-    * @return devuelve un objeto de tipo PilaMaxCola
+    * @return devuelve un objeto de tipo PilaMax
     */
-    PilaMaxCola& operator=(const PilaMaxCola &otra_pila);
+    PilaMax& operator=(const PilaMax &otra_pila);
 
 
     /**
@@ -72,14 +91,14 @@ public:
     bool vacio() const;
 
     /** 
-    * @brief Operador para dar salida a los datos almacenados en un objeto PilaMaxCola.
+    * @brief Operador para dar salida a los datos almacenados en un objeto PilaMax.
     * @param flujo Recibe como entrada un flujo de salida
-    * @param PilaMaxCola Recibe como entrada un objeto PilaMaxCola
+    * @param PilaMax Recibe como entrada un objeto PilaMax
     * @return devuelve un flujo de salida
     */
-    friend ostream& operator<<(ostream &flujo, const PilaMaxCola &una_pila);
+    friend ostream& operator<<(ostream &flujo, const PilaMax &una_pila);
 
 };
 
 
-#endif // PilaMaxCola_h
+#endif // PilaMax_h

@@ -1,18 +1,18 @@
 /**
-* @class PilaMaxVD
+* @class PilaMax
 *
 * @brief Clase que posee todos los metodos basicos 
 * de una pila impleventada con un vector dinámico.
 * 
-* Definicion: PilaMaxVD representa una pila y todas sus funcionalidades básicas implementada internamente con un vector dinámico.
+* Definicion: PilaMax representa una pila y todas sus funcionalidades básicas implementada internamente con un vector dinámico.
 *
 * @author Ignacio Martinez, Miguel Moraga, Pablo Robles
 *
 * @date 13/11/2017
 *
 */
-#ifndef PilaMaxVD_h
-#define PilaMaxVD_h
+#ifndef Pila_max_VD_h
+#define Pila_max_VD_h
 
 #include <iostream>
 #include "Celda.h"
@@ -20,7 +20,7 @@
 
 using namespace std;
 
-class PilaMaxVD{
+class PilaMax{
 
 private:
     
@@ -37,25 +37,25 @@ public:
     /**
      * @brief Constructor por defecto
      */
-    PilaMaxVD();
+    PilaMax();
 	/** 
     * @brief Constructor de copia
     * @param otra_pila recibe como parametro otra pila para copiar
     */
-    PilaMaxVD(const PilaMaxVD &otra_pila);
+    PilaMax(const PilaMax &otra_pila);
 
     /**
     * @brief Copia los valores de una pila en otra
     * @param otra_pila recibe como parametro un objeto pila por referencia
     */
-    void copiar(const PilaMaxVD &otra_pila);
+    void copiar(const PilaMax &otra_pila);
 
     /** 
 	* @brief Operador para igualar dos pilas
 	* @param otra_pila recibe como parametro otra pila con la que igualar
-	* @return devuelve un objeto de tipo PilaMaxVD
+	* @return devuelve un objeto de tipo PilaMax
 	*/
-    PilaMaxVD& operator=(const PilaMaxVD &otra_pila);
+    PilaMax& operator=(const PilaMax &otra_pila);
 
     /**
     * @brief Poner en la ultima posicion
@@ -91,14 +91,14 @@ public:
     bool vacio() const;
 
     /** 
-	* @brief Operador para dar salida a los datos almacenados en un objeto PilaMaxVD.
+	* @brief Operador para dar salida a los datos almacenados en un objeto PilaMax.
 	* @param flujo Recibe como entrada un flujo de salida
-	* @param PilaMaxVD Recibe como entrada un objeto PilaMaxVD
+	* @param PilaMax Recibe como entrada un objeto PilaMax
 	* @return devuelve un flujo de salida
 	*/
-    friend ostream& operator<<(ostream &flujo, const PilaMaxVD &una_pila);
+    friend ostream& operator<<(ostream &flujo, const PilaMax &una_pila);
 
 };
 
 
-#endif // PilaMaxVD_h
+#endif // PilaMax_h

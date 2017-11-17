@@ -1,27 +1,27 @@
 #include <Pila_max_cola.h>
 
-PilaMaxCola::PilaMaxCola(){};
+PilaMax::PilaMax(){};
 
-PilaMaxCola::PilaMaxCola(const PilaMaxCola &otra_pila){
+PilaMax::PilaMax(const PilaMax &otra_pila){
 	this->copiar(otra_pila);
 }
-int PilaMaxCola::getNumElementos(){
+int PilaMax::getNumElementos(){
 	return pila.num_elementos();
 }
-void PilaMaxCola::copiar(const PilaMaxCola &otra_pila){
+void PilaMax::copiar(const PilaMax &otra_pila){
 	this->pila = otra_pila.pila;
 }
 
-PilaMaxCola& PilaMaxCola::operator=(const PilaMaxCola &otra_pila){
+PilaMax& PilaMax::operator=(const PilaMax &otra_pila){
 	this->copiar(otra_pila);
 	return *this;
 }
 
-Celda PilaMaxCola::tope() const{
+Celda PilaMax::tope() const{
 	return pila.frente();
 }
 
-void PilaMaxCola::poner(int a_introducir){
+void PilaMax::poner(int a_introducir){
 	Celda nueva;
 	nueva.dato = a_introducir;
 	if(pila.num_elementos()==0){
@@ -39,24 +39,24 @@ void PilaMaxCola::poner(int a_introducir){
 	}
 }
 
-void PilaMaxCola::quitar(){
+void PilaMax::quitar(){
 	pila.quitar();
 }
 
-int PilaMaxCola::elementoTope() const{
+int PilaMax::elementoTope() const{
 	return pila.frente().dato;
 }
 
-int PilaMaxCola::maximo() const{
+int PilaMax::maximo() const{
 	return pila.frente().max;
 }
 
-bool PilaMaxCola::vacio() const{
+bool PilaMax::vacio() const{
 	return pila.num_elementos()==0;
 }
 
-ostream& operator<<(ostream &flujo, const PilaMaxCola &una_pila){
-	PilaMaxCola otra_pila;
+ostream& operator<<(ostream &flujo, const PilaMax &una_pila){
+	PilaMax otra_pila;
 	otra_pila.copiar(una_pila);
 	while(!otra_pila.vacio()){
 		flujo << "[" << otra_pila.elementoTope() << ", " << otra_pila.maximo() << "]" <<endl;
