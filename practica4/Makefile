@@ -7,23 +7,25 @@ CXX = g++
 CPPFLAGS = -Wall -g  -I$(INC) -c -std=c++11
 
 
-all: $(BIN)/usopilas_max
+all: $(BIN)/pruebacronologia
 # ************ Generación de documentación ******************
 #documentacion:
 	doxygen doc/doxys/Doxyfile
 	
 # ************ Compilación de módulos ************
-$(BIN)/usopilas_max: $(OBJ)/usopilas_max.o $(OBJ)/Pila_max_VD.o
-	$(CXX) -I$(INC) $(OBJ)/usopilas_max.o $(OBJ)/Pila_max_VD.o $(OBJ)/Pila_max_cola.o -o $(BIN)/usopilas_max
+$(BIN)/pruebacronologia: $(OBJ)/pruebacronologia.o $(OBJ)/Cronologia.o $(OBJ)/FechaHistorica.o
+	$(CXX) -I$(INC) $(OBJ)/pruebacronologia.o $(OBJ)/Cronologia.o $(OBJ)/FechaHistorica.o -o $(BIN)/pruebacronologia
 	
-$(OBJ)/usopilas_max.o : $(SRC)/usopilas_max.cpp
-	$(CXX) $(CPPFLAGS) $(SRC)/usopilas_max.cpp -o $(OBJ)/usopilas_max.o
+$(OBJ)/pruebacronologia.o : $(SRC)/pruebacronologia.cpp
+	$(CXX) $(CPPFLAGS) $(SRC)/pruebacronologia.cpp -o $(OBJ)/pruebacronologia.o
 	
-$(OBJ)/Pila_max_VD.o : $(SRC)/Pila_max_VD.cpp
-	$(CXX) $(CPPFLAGS) $(SRC)/Pila_max_VD.cpp -o $(OBJ)/Pila_max_VD.o
+$(OBJ)/Cronologia.o : $(SRC)/Cronologia.cpp
+	$(CXX) $(CPPFLAGS) $(SRC)/Cronologia.cpp -o $(OBJ)/Cronologia.o
+	
+$(OBJ)/FechaHistorica.o : $(SRC)/FechaHistorica.cpp
+	$(CXX) $(CPPFLAGS) $(SRC)/FechaHistorica.cpp -o $(OBJ)/FechaHistorica.o
 
-$(OBJ)/Pila_max_VD.o : $(SRC)/Pila_max_cola.cpp
-	$(CXX) $(CPPFLAGS) $(SRC)/Pila_max_cola.cpp -o $(OBJ)/Pila_max_cola.o
+
 
 # ************ Limpieza ************
 clean :
