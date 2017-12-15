@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setanio',['setAnio',['../classFechaHistorica.html#a252206da94dbbaf9fb814afd3ac9ea77',1,'FechaHistorica']]]
+  ['recuentoeventos',['recuentoEventos',['../classCronologia.html#ae8a898fb655020cc00fa6bcec8dfb2fc',1,'Cronologia']]]
 ];
