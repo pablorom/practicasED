@@ -189,7 +189,15 @@ public:
 
 	int num_personajes_cumplen(int columna, vector<bool> personajes_no_tumbados);
 
-	int decidir_mejor_pregunta(vector<bool> atrib_no_usados, int n);
+	int decidir_mejor_pregunta(vector<bool> atrib_no_usados, vector<bool> p_no_tumbados, int n);
+
+	void crear_nodos(bintree<Pregunta>::node nodo);
+
+	void actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, Pregunta & pregunta, const int n_per, bool rama);
+
+	int posicion_atributo(string atr);
+
+	friend class Pregunta;
 };
 
 #endif

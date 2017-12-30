@@ -8,6 +8,8 @@ Pregunta::Pregunta(){
 Pregunta::Pregunta(const Pregunta & pregunta){
 	this->atributo       = pregunta.atributo;
 	this->num_personajes = pregunta.num_personajes;
+	this->atrib_no_usados = pregunta.atrib_no_usados;
+	this->personajes_no_tumbados = pregunta.personajes_no_tumbados;
 }
 
 Pregunta::Pregunta(const string atributo,const int num_personajes){
@@ -23,6 +25,8 @@ Pregunta::~Pregunta(){
 Pregunta & Pregunta::operator = (const Pregunta & pregunta){
 	this->atributo       = pregunta.atributo;
 	this->num_personajes = pregunta.num_personajes;
+	this->atrib_no_usados = pregunta.atrib_no_usados;
+	this->personajes_no_tumbados = pregunta.personajes_no_tumbados;
 	return *this;
 }
 

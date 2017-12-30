@@ -6,6 +6,7 @@
 #include <cassert>
 #include <vector>
 
+
 using namespace std;
 
 /**
@@ -111,6 +112,8 @@ class Pregunta{
 		  * @brief Devuelve true si el nodo es de pregunta.
 		  */
 		bool es_pregunta() const;
+
+		friend class QuienEsQuien;
 };
 
 #endif

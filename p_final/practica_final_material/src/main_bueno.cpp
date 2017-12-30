@@ -7,11 +7,10 @@
 
 using namespace std;
 
-
 int main(int argc, char * argv[]){
 
 	bool jugar = false;
-	//bool limpiar = false;
+	bool limpiar = false;
 	QuienEsQuien quienEsQuien;
 	
 	if(argc == 2){
@@ -48,7 +47,7 @@ int main(int argc, char * argv[]){
 			f>> quienEsQuien;
 			jugar = true;
 		}
-	}/* else if(argc == 3 ){
+	} else if(argc == 3 ){
 		string parametroLimpiar = "limpiar";
 		if(parametroLimpiar== argv[2]){
 			cout << "Cargando fichero para limpiar (sin jugar) '"<< argv[1] <<"'"<< endl;
@@ -64,7 +63,7 @@ int main(int argc, char * argv[]){
 			return 1;
 		}
 
-	}*/ else {
+	} else {
 		cout << "No se reconocen los argumentos. Ejemplos de uso:" << endl;
 		cout << "\tJugar:               ./bin/quienesquien RUTA_FICHERO"<< endl;
 		cout << "\tLimpiar sin jugar:   ./bin/quienesquien RUTA_FICHERO limpiar"<< endl;
@@ -73,31 +72,25 @@ int main(int argc, char * argv[]){
 	}
 
 	quienEsQuien.mostrar_estructuras_leidas();
-
-	//quienEsQuien.usar_arbol(quienEsQuien.crear_arbol());
-	quienEsQuien.crear_arbol();
-
+	quienEsQuien.usar_arbol(quienEsQuien.crear_arbol());
+	
 	cout << "=========== Arbol en crudo ===========" << endl;
 	quienEsQuien.escribir_arbol_completo();
-	/*
+	
 	cout << "Profundidad promedio de las hojas del arbol: ";
 	cout << quienEsQuien.profundidad_promedio_hojas() << endl; 
 	cout << "======================================" << endl << endl << endl;
 
-	//quienEsQuien.eliminar_nodos_redundantes();
+	quienEsQuien.eliminar_nodos_redundantes();
 	
-	*/
 	cout << "=========== Arbol ===================="<<endl;
 	quienEsQuien.escribir_arbol_completo();
-	/*
 	cout << "Profundidad promedio de las hojas del arbol: ";
 	cout << quienEsQuien.profundidad_promedio_hojas()<<endl; 
-	*/
 	cout << "======================================" << endl << endl << endl;
-	/*
+
 	if(jugar){
 		quienEsQuien.iniciar_juego();
 	}
-	*/
 	return 0;
 }

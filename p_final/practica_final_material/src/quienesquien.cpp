@@ -5,14 +5,25 @@
 #include <math.h>
 #include <algorithm>
 
+
 QuienEsQuien::QuienEsQuien(){
-	//TODO :)
+	
 }
 QuienEsQuien::QuienEsQuien(const QuienEsQuien &quienEsQuien){
-	//TODO :)
+	*this = quienEsQuien;
 }
 QuienEsQuien& QuienEsQuien::operator= (const QuienEsQuien &quienEsQuien){
-	//TODO :)
+	//Copia personajes
+	this->personajes = quienEsQuien.personajes;
+	//Copia atributos
+	this->atributos = quienEsQuien.atributos;
+	//Copia tablero
+	this->tablero = quienEsQuien.tablero;
+	//Copia arbol
+	this->arbol = quienEsQuien.arbol;
+	//Copia jugada actual
+	this->jugada_actual = quienEsQuien.jugada_actual;
+
 	return *this;
 }
 QuienEsQuien::~QuienEsQuien(){
@@ -152,7 +163,7 @@ ostream& operator << (ostream& os, const QuienEsQuien &quienEsQuien){
 
 	//Rellenamos con ceros y unos cada línea y al final ponemos el nombre del personaje.
 	for(int indice_personaje=0;indice_personaje<quienEsQuien.personajes.size();indice_personaje++){
-		for(int indice_atributo=0;indice_atributo<quienEsQuien.personajes.size();indice_atributo++){
+		for(int indice_atributo=0;indice_atributo<quienEsQuien.atributos.size();indice_atributo++){
 
 			os  << quienEsQuien.tablero[indice_personaje][indice_atributo] << "\t";
 		}
@@ -200,25 +211,32 @@ bintree<Pregunta> QuienEsQuien::crear_arbol(){
 
 	//Inicializamos todos a true
 	for (int i = 0; i < n_personajes; i++){
-		p_no_usados[i]=true;
+		p_no_usados.push_back(true);
 	}
 
 	//Inicializamos todos a true
 	for (int i = 0; i < atributos.size(); i++){
-		at_no_usados[i]=true;
+		at_no_usados.push_back(true);
 	}
 
 	//creamos el nodo raiz
-	int mejor_pos_atributo=decidir_mejor_pregunta(at_no_usados, p_no_usados, n_personajes);
-	Pregunta nodo_raiz;
-	nodo_raiz.atributo = atributos[mejor_pos_atributo];
-	nodo_raiz.num_personajes = n_personajes;
+	int mejor_pos_atributo = decidir_mejor_pregunta(at_no_usados, p_no_usados, n_personajes);
+	Pregunta pregunta_raiz;
+	pregunta_raiz.atributo = atributos[mejor_pos_atributo];
+	pregunta_raiz.num_personajes = n_personajes;
+
+	pregunta_raiz.atrib_no_usados = at_no_usados;
+
+	pregunta_raiz.personajes_no_tumbados = p_no_usados;
 
 	//Introducimos nodo raiz en el arbol con el constructor
-	arbol = new bintree(nodo_raiz);
+	bintree<Pregunta> subarbol(pregunta_raiz);
 
-	crear_nodos(nodo_raiz);
+	arbol = subarbol;
+	
+	crear_nodos(arbol.root());
 
+	cout << "COUT 5" <<endl;
 	return arbol;
 }
 
@@ -227,14 +245,43 @@ void QuienEsQuien::usar_arbol(bintree<Pregunta> arbol_nuevo){
 }
 
 void QuienEsQuien::iniciar_juego(){
+	char opcion;
+	int num_personajes = personajes.size();
+	//Crear arbol
+	//this->crear_arbol();
 	
-	
+	//Hacer preguntas
+	bintree<Pregunta>::node nodo_act;
+	nodo_act = arbol.root();
+
+	while((*nodo_act).num_personajes != 1){
+		cout << (*nodo_act).atributo;
+		do{
+			cin >> opcion;
+			opcion = toupper(opcion);
+		}while(opcion!='S' || opcion!='N');
+
+		if(opcion == 'S'){
+			nodo_act = nodo_act.left();
+		}else if(opcion == 'N'){
+			nodo_act = nodo_act.right();
+		}
+	}
+
+	cout << "Tu personaje es: " << (*nodo_act).atributo;
+
 }
 
 set<string> QuienEsQuien::informacion_jugada(bintree<Pregunta>::node jugada_actual){
 	
-	//TODO :)
+	vector<bool> levantados = (*jugada_actual).personajes_no_tumbados;
 	set<string> personajes_levantados;
+
+	for(int i = 0; i<levantados.size(); i++){
+		if(levantados[i] == 1){
+			personajes_levantados.insert(personajes[i]);
+		}
+	}
 	return personajes_levantados;
 }
 
@@ -261,9 +308,11 @@ void QuienEsQuien::escribir_arbol_completo() const{
 	escribir_esquema_arbol(cout,this->arbol,this->arbol.root(),pre);
 }
 
+/*
 void QuienEsQuien::eliminar_nodos_redundantes(){
 	// TODO ^^
 }
+*/
 
 float QuienEsQuien::profundidad_promedio_hojas(){
 	//TODO :)
@@ -322,33 +371,35 @@ void QuienEsQuien::tablero_aleatorio(int numero_de_personajes){
 
 int QuienEsQuien::decidir_mejor_pregunta(vector<bool> atrib_no_usados, vector<bool> p_no_tumbados, int n){
 	//1 son no usados 0 usados
-	int personaje_menor_diferencia;
+	int atrib_menor_diferencia;
 	double menor_diferencia = 100;
 	double valor_a_alcanzar = n / 2;
 	int valor_atrib = 0;
+
+	cout << endl;
 	for (int i = 0; i < atrib_no_usados.size(); i++){
 		if(atrib_no_usados[i]==true){
 			valor_atrib = num_personajes_cumplen(i, p_no_tumbados);
 			if (abs(valor_atrib - valor_a_alcanzar) < menor_diferencia){
-				personaje_menor_diferencia = i;
+				atrib_menor_diferencia = i;
 				menor_diferencia = abs(valor_atrib - valor_a_alcanzar);
 			} 
 		}
 	}
-	return personaje_menor_diferencia;
+	return atrib_menor_diferencia;
 }
 
 int QuienEsQuien::num_personajes_cumplen(int columna, vector<bool> p_no_tumbados){
 	int suma = 0;
 	for (int i = 0; i < personajes.size() ; i++){
-		if(tablero[columna][i] == 1 && p_no_tumbados[i])
+		if(tablero[i][columna] == 1 && p_no_tumbados[i])
 			suma++;	
 	}
 	return suma;
 }
 
 
-int posicion_atributo(string atr){
+int QuienEsQuien::posicion_atributo(string atr){
 	int i;
 	bool encontrado=false;
 	for (i = 0; i < atributos.size() && !encontrado; i++){
@@ -362,61 +413,87 @@ int posicion_atributo(string atr){
 		return -1;
 }
 
-void actualizar_nodo(const Pregunta nodo_actual, Pregunta & otro_nodo, const int n_per){
+void QuienEsQuien::actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, Pregunta & pregunta, const int n_per, bool rama){
 	
 	//Actualizamos atrib_no_usados del nuevo nodo
-	otro_nodo.atrib_no_usados = nodo.atrib_no_usados;
-	otro_nodo.atrib_no_usados[posicion_atributo(nodo.atributo)] = 0;
+	pregunta.atrib_no_usados = ((*nodo_actual).atrib_no_usados);
+
+	pregunta.atrib_no_usados[posicion_atributo((*nodo_actual).atributo)] = 0;
 	
+
+	cout << "COUT A" << endl;
+	//Resize de los vectores
+	pregunta.personajes_no_tumbados.resize((*nodo_actual).personajes_no_tumbados.size());
+
+	//Copiamos el vector personajes_no_tumbados del padre
+	pregunta.personajes_no_tumbados = (*nodo_actual).personajes_no_tumbados;
 	//Actualizamos personajes_no_tumbados del nuevo nodo
-	for (int i = 0; i < nodo.personajes_no_tumbados.size(); i++){
-		if(nodo.personajes_no_tumbados[i] == 1){
-			otro_nodo.personajes_no_tumbados[i] = tablero[posicion_atributo(nodo.atributo)][i];
+	for (int i = 0; i < ((*nodo_actual).personajes_no_tumbados).size(); i++){
+		if((*nodo_actual).personajes_no_tumbados[i] == 1){
+			if(rama == true)
+				pregunta.personajes_no_tumbados[i] = tablero[i][posicion_atributo((*nodo_actual).atributo)];
+			else
+				pregunta.personajes_no_tumbados[i] = !tablero[i][posicion_atributo((*nodo_actual).atributo)];
 		}
 	}
+
+	cout << "COUT B" << endl;
+
 	//Actualizamos num_personajes del nuevo nodo
-	otro_nodo.num_personajes = n_per;
+	pregunta.num_personajes = n_per;
 
 	if(n_per != 1){
 		//Actualizamos atributo del nuevo nodo
-		otro_nodo.atributo = atributos[decidir_mejor_pregunta(otro_nodo.atrib_no_usados,
-									 otro_nodo.personajes_no_tumbados, n_per)];
+		pregunta.atributo = atributos[decidir_mejor_pregunta(pregunta.atrib_no_usados,
+									 pregunta.personajes_no_tumbados, n_per)];
 	}else{
 		int i;
 		bool encontrado = false;
-		for (i = 0; i < otro_nodo.personajes_no_tumbados.size() && !encontrado; i++){
-			if(nodo.personajes_no_tumbados[i] == 1)
+		for (i = 0; i < pregunta.personajes_no_tumbados.size() && !encontrado; i++){
+			if(pregunta.personajes_no_tumbados[i] == 1)
 				encontrado == true;
 		}
-		otro_nodo.atributo = personajes[i];
+		assert(encontrado == true);
+		pregunta.atributo = personajes[i];
 	}
+	cout << "COUT C" << endl;
 }
 
-void crear_nodos(bintree<Pregunta>::node nodo){
-	int atr = decidir_mejor_pregunta(nodo.atrib_no_usados, nodo.personajes_no_tumbados, 
-										nodo.num_personajes);
+//FUNCION RECURSIVA
+void QuienEsQuien::crear_nodos(bintree<Pregunta>::node nodo){
+	int atr = decidir_mejor_pregunta((*nodo).atrib_no_usados, (*nodo).personajes_no_tumbados, 
+										(*nodo).num_personajes);
 	int izda = 0, dcha = 0;
 
-	for (int i = 0; i < personajes_no_tumbados.size(); i++){
+	
+	for (int i = 0; i < personajes.size(); i++){
 		if(tablero[atr][i] == 1)
 			izda++;
 	}
-	dcha = personajes_no_tumbados.size() - izda;
+	dcha = personajes.size() - izda;
+
 
 	Pregunta preg_izda, preg_dcha;
 
-	node<Pregunta> nodo_izda, nodo_dcha;
+	bintree<Pregunta>::node nodo_izda(preg_izda), nodo_dcha(preg_dcha);
 
-	actualizar_nodo(nodo, nodo_izda, izda);
-	actualizar_nodo(nodo, nodo_dcha, dcha);
 
-	arbol.insert_left(nodo_izda, preg_izda);
-	arbol.insert_right(nodo_dcha, preg_dcha);
 
+	//CAMBIAR IMPLEMENTACION
+	actualizar_nodo(nodo, preg_izda, izda, true);
+	actualizar_nodo(nodo, preg_dcha, dcha, false);
+
+
+	arbol.insert_left(nodo, preg_izda);
+	arbol.insert_right(nodo, preg_dcha);
+
+	cout << "ARBOL RAIZ: " << (*arbol.root()).num_personajes;
+	cout << "RAIZ -> IZQD: " << (*(arbol.root()).left()).num_personajes;
+
+	/*	
 	if(izda != 1)
 		crear_nodos(nodo_izda);
 	if(dcha != 1)
 		crear_nodos(nodo_dcha);
-
-		
+	*/
 }

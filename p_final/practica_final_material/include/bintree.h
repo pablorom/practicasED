@@ -30,6 +30,8 @@ class bintree {
 public:
   class node;
 
+  friend class QuienEsQuien;
+
   typedef unsigned int size_type;
   
   /**
