@@ -236,7 +236,6 @@ bintree<Pregunta> QuienEsQuien::crear_arbol(){
 	
 	crear_nodos(arbol.root());
 
-	cout << "COUT 5" <<endl;
 	return arbol;
 }
 
@@ -375,10 +374,13 @@ int QuienEsQuien::decidir_mejor_pregunta(vector<bool> atrib_no_usados, vector<bo
 	double menor_diferencia = 100;
 	double valor_a_alcanzar = n / 2;
 	int valor_atrib = 0;
-
+	for(int i = 0; i < atrib_no_usados.size(); i++){
+		cout << atrib_no_usados[i];
+	}
 	cout << endl;
+
 	for (int i = 0; i < atrib_no_usados.size(); i++){
-		if(atrib_no_usados[i]==true){
+		if(atrib_no_usados[i] == true){
 			valor_atrib = num_personajes_cumplen(i, p_no_tumbados);
 			if (abs(valor_atrib - valor_a_alcanzar) < menor_diferencia){
 				atrib_menor_diferencia = i;
@@ -400,28 +402,25 @@ int QuienEsQuien::num_personajes_cumplen(int columna, vector<bool> p_no_tumbados
 
 
 int QuienEsQuien::posicion_atributo(string atr){
-	int i;
-	bool encontrado=false;
-	for (i = 0; i < atributos.size() && !encontrado; i++){
-		if(atributos[i]==atr){
-			encontrado=true;
+	int pos;
+	bool encontrado = false;
+	for (int i = 0; i < this->atributos.size() && !encontrado; i++){
+		if(this->atributos[i] == atr){
+			encontrado = true;
+			pos = i;
 		}
-	}
-	if(encontrado)
-		return i;
-	else
-		return -1;
+	}	
+	assert(encontrado == true);
+	return pos;
 }
 
 void QuienEsQuien::actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, Pregunta & pregunta, const int n_per, bool rama){
 	
 	//Actualizamos atrib_no_usados del nuevo nodo
 	pregunta.atrib_no_usados = ((*nodo_actual).atrib_no_usados);
-
 	pregunta.atrib_no_usados[posicion_atributo((*nodo_actual).atributo)] = 0;
 	
 
-	cout << "COUT A" << endl;
 	//Resize de los vectores
 	pregunta.personajes_no_tumbados.resize((*nodo_actual).personajes_no_tumbados.size());
 
@@ -436,8 +435,6 @@ void QuienEsQuien::actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, 
 				pregunta.personajes_no_tumbados[i] = !tablero[i][posicion_atributo((*nodo_actual).atributo)];
 		}
 	}
-
-	cout << "COUT B" << endl;
 
 	//Actualizamos num_personajes del nuevo nodo
 	pregunta.num_personajes = n_per;
@@ -456,7 +453,6 @@ void QuienEsQuien::actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, 
 		assert(encontrado == true);
 		pregunta.atributo = personajes[i];
 	}
-	cout << "COUT C" << endl;
 }
 
 //FUNCION RECURSIVA
@@ -487,13 +483,12 @@ void QuienEsQuien::crear_nodos(bintree<Pregunta>::node nodo){
 	arbol.insert_left(nodo, preg_izda);
 	arbol.insert_right(nodo, preg_dcha);
 
-	cout << "ARBOL RAIZ: " << (*arbol.root()).num_personajes;
-	cout << "RAIZ -> IZQD: " << (*(arbol.root()).left()).num_personajes;
-
-	/*	
+	escribir_arbol_completo();
+	
 	if(izda != 1)
-		crear_nodos(nodo_izda);
+		crear_nodos(nodo.left());
 	if(dcha != 1)
-		crear_nodos(nodo_dcha);
-	*/
+		crear_nodos(nodo.right());
+	
+	
 }
