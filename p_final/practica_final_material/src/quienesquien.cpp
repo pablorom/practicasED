@@ -254,11 +254,11 @@ void QuienEsQuien::iniciar_juego(){
 	nodo_act = arbol.root();
 
 	while((*nodo_act).num_personajes != 1){
-		cout << (*nodo_act).atributo;
+		cout << "¿Es " << (*nodo_act).atributo << "?" << endl;
 		do{
 			cin >> opcion;
 			opcion = toupper(opcion);
-		}while(opcion!='S' || opcion!='N');
+		}while(opcion!='S' && opcion!='N');
 
 		if(opcion == 'S'){
 			nodo_act = nodo_act.left();
@@ -267,7 +267,7 @@ void QuienEsQuien::iniciar_juego(){
 		}
 	}
 
-	cout << "Tu personaje es: " << (*nodo_act).atributo;
+	cout << "Tu personaje es: " << (*nodo_act).atributo << endl;
 
 }
 
@@ -313,12 +313,51 @@ void QuienEsQuien::eliminar_nodos_redundantes(){
 }
 */
 
-float QuienEsQuien::profundidad_promedio_hojas(){
-	//TODO :)
+int QuienEsQuien::num_hojas(){
+	int num_hojas = 0;
+	bintree<Pregunta>::level_iterator it;
 
-	return -1;
+	for (it = arbol.begin_level(); it != arbol.end_level(); ++it){
+		if((*it).num_personajes == 1)
+			num_hojas++;
+	}
+	cout << "NUM HOJAS: " << num_hojas << endl;
+	return num_hojas;
 }
 
+
+float QuienEsQuien::calcular_suma_alturas_hojas(const bintree<Pregunta>::node & nodo_actual, float n){
+	float n_izq = 0, n_der = 0;
+	if((*nodo_actual).num_personajes == 1){
+		return n;
+	}else{
+		n++;
+		//Recursividad
+		if(!nodo_actual.left().null()){
+			n_izq = calcular_suma_alturas_hojas(nodo_actual.left(), n);
+		}
+		if(!nodo_actual.right().null()){
+			n_der = calcular_suma_alturas_hojas(nodo_actual.right(), n);
+		}
+	}
+
+	if(arbol.root() == nodo_actual){
+		return (n_izq+n_der);
+
+	}else{
+		return n_izq+n_der;
+	}
+}
+
+
+float QuienEsQuien::profundidad_promedio_hojas(){
+	float n = 0, promedio_hojas;
+	bintree<Pregunta>::node nodo = arbol.root();
+
+	promedio_hojas = calcular_suma_alturas_hojas(nodo, n);
+	promedio_hojas /= num_hojas();
+	return promedio_hojas;
+}
 /**
  * @brief Genera numero enteros positivos aleatorios en el rango [min,max).
 **/

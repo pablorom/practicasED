@@ -89,15 +89,15 @@ int main(int argc, char * argv[]){
 	*/
 	cout << "=========== Arbol ===================="<<endl;
 	quienEsQuien.escribir_arbol_completo();
-	/*
+	
 	cout << "Profundidad promedio de las hojas del arbol: ";
 	cout << quienEsQuien.profundidad_promedio_hojas()<<endl; 
-	*/
+	
 	cout << "======================================" << endl << endl << endl;
-	/*
+	
 	if(jugar){
 		quienEsQuien.iniciar_juego();
 	}
-	*/
+	
 	return 0;
 }
