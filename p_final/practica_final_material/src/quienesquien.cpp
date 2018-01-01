@@ -524,8 +524,6 @@ void QuienEsQuien::crear_nodos(bintree<Pregunta>::node nodo){
 
 	arbol.insert_left(nodo, preg_izda);
 	arbol.insert_right(nodo, preg_dcha);
-
-	escribir_arbol_completo();
 	
 	if(izda != 1)
 		crear_nodos(nodo.left());
