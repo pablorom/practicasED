@@ -374,10 +374,6 @@ int QuienEsQuien::decidir_mejor_pregunta(vector<bool> atrib_no_usados, vector<bo
 	double menor_diferencia = 100;
 	double valor_a_alcanzar = n / 2;
 	int valor_atrib = 0;
-	for(int i = 0; i < atrib_no_usados.size(); i++){
-		cout << atrib_no_usados[i];
-	}
-	cout << endl;
 
 	for (int i = 0; i < atrib_no_usados.size(); i++){
 		if(atrib_no_usados[i] == true){
@@ -444,14 +440,16 @@ void QuienEsQuien::actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, 
 		pregunta.atributo = atributos[decidir_mejor_pregunta(pregunta.atrib_no_usados,
 									 pregunta.personajes_no_tumbados, n_per)];
 	}else{
-		int i;
+		int pos;
 		bool encontrado = false;
-		for (i = 0; i < pregunta.personajes_no_tumbados.size() && !encontrado; i++){
-			if(pregunta.personajes_no_tumbados[i] == 1)
-				encontrado == true;
+		for (int i = 0; i < pregunta.personajes_no_tumbados.size() && !encontrado; i++){
+			if(pregunta.personajes_no_tumbados[i] == 1){
+				encontrado = true;
+				pos = i;
+			}
 		}
 		assert(encontrado == true);
-		pregunta.atributo = personajes[i];
+		pregunta.atributo = personajes[pos];
 	}
 }
 
@@ -461,12 +459,17 @@ void QuienEsQuien::crear_nodos(bintree<Pregunta>::node nodo){
 										(*nodo).num_personajes);
 	int izda = 0, dcha = 0;
 
-	
+	int total = 0;	
 	for (int i = 0; i < personajes.size(); i++){
-		if(tablero[atr][i] == 1)
-			izda++;
+		if((*nodo).personajes_no_tumbados[i] == 1){
+			if(tablero[i][atr] == 1){
+				izda++;
+			}
+			total++;
+		}
+
 	}
-	dcha = personajes.size() - izda;
+	dcha = total - izda;
 
 
 	Pregunta preg_izda, preg_dcha;
