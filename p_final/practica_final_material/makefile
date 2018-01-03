@@ -11,7 +11,7 @@ CPPFLAGS = -g  -I$(INC) -std=c++11
 
 # Las macros se usan en las reglas del makefile como si fuesen variables
 # que se sustituyen por su valor definido anteriormente
-all: $(BIN)/quienesquien
+all: $(BIN)/quienesquien 
 
 jugar: $(BIN)/quienesquien
 	$(BIN)/quienesquien datos/personajes-1.csv
@@ -27,6 +27,7 @@ limpiarRedundante: $(BIN)/quienesquien
 
 aleatorio: $(BIN)/quienesquien
 	$(BIN)/quienesquien aleatorio
+
 
 # ************ Generación de documentación ******************
 documentacion: $(SRC)/main.cpp $(SRC)/pregunta.cpp $(SRC)/quienesquien.cpp $(INC)/pregunta.h $(INC)/quienesquien.h
@@ -48,8 +49,8 @@ $(OBJ)/pregunta.o: $(SRC)/pregunta.cpp
 
 
 # ************ Limpieza y encapsulado ************
-clean :
+clean:
 	-rm -r $(OBJ)/* $(BIN)/* $(ZIP)/*
 
-zip : clean
+zip: clean
 	zip -r $(ZIP)/$(PRJ).zip *

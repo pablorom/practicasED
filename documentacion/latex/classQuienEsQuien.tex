@@ -1,0 +1,413 @@
+\hypertarget{classQuienEsQuien}{}\section{Referencia de la Clase Quien\+Es\+Quien}
+\label{classQuienEsQuien}\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+
+
+T.\+D.\+A. \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien}.  
+
+
+
+
+{\ttfamily \#include $<$quienesquien.\+h$>$}
+
+\subsection*{M茅todos p煤blicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classQuienEsQuien_a2942486f1ff134fec70e5d21d7916a2e}{Quien\+Es\+Quien} ()\hypertarget{classQuienEsQuien_a2942486f1ff134fec70e5d21d7916a2e}{}\label{classQuienEsQuien_a2942486f1ff134fec70e5d21d7916a2e}
+
+\begin{DoxyCompactList}\small\item\em Constructor b醩ico de la clase. \end{DoxyCompactList}\item 
+\hyperlink{classQuienEsQuien_a362b7513eba83170d18d98946bc01d87}{Quien\+Es\+Quien} (const \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} \&quien\+Es\+Quien)
+\begin{DoxyCompactList}\small\item\em Constructor de copia. \end{DoxyCompactList}\item 
+\hyperlink{classQuienEsQuien_ade80093df9e450c6e37e8992da112a70}{$\sim$\+Quien\+Es\+Quien} ()\hypertarget{classQuienEsQuien_ade80093df9e450c6e37e8992da112a70}{}\label{classQuienEsQuien_ade80093df9e450c6e37e8992da112a70}
+
+\begin{DoxyCompactList}\small\item\em Destructor del pregunta. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_a17703bc3277c2846fa67f857894366cd}{limpiar} ()\hypertarget{classQuienEsQuien_a17703bc3277c2846fa67f857894366cd}{}\label{classQuienEsQuien_a17703bc3277c2846fa67f857894366cd}
+
+\begin{DoxyCompactList}\small\item\em Vacia todos los datos del \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} receptor. \end{DoxyCompactList}\item 
+\hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} \& \hyperlink{classQuienEsQuien_ae7a4139787934cca03996687460935dd}{operator=} (const \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} \&quien\+Es\+Quien)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de asignaci髇. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_a67a107f9ffee5bf65cc0884fa39d66cf}{mostrar\+\_\+estructuras\+\_\+leidas} ()\hypertarget{classQuienEsQuien_a67a107f9ffee5bf65cc0884fa39d66cf}{}\label{classQuienEsQuien_a67a107f9ffee5bf65cc0884fa39d66cf}
+
+\begin{DoxyCompactList}\small\item\em Escribe en la salida estandard las estructuras atributos, personajes y tablero. \end{DoxyCompactList}\item 
+\hyperlink{classbintree}{bintree}$<$ \hyperlink{classPregunta}{Pregunta} $>$ \hyperlink{classQuienEsQuien_a2af507d54ac1d74f98ee5694fccf0406}{crear\+\_\+arbol} ()\hypertarget{classQuienEsQuien_a2af507d54ac1d74f98ee5694fccf0406}{}\label{classQuienEsQuien_a2af507d54ac1d74f98ee5694fccf0406}
+
+\begin{DoxyCompactList}\small\item\em Este m閠odo construye el 醨bol de preguntas para todos los personajes del tablero. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_a0949bd026c2beeaacbf36fd0ba6fc3a9}{usar\+\_\+arbol} (\hyperlink{classbintree}{bintree}$<$ \hyperlink{classPregunta}{Pregunta} $>$ arbol\+\_\+nuevo)
+\begin{DoxyCompactList}\small\item\em Sustituye el 醨bol actual por el 醨bol pasado por par醡etro. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_a1b8c88bef5056bdd366810d180d29d94}{escribir\+\_\+arbol\+\_\+completo} () const \hypertarget{classQuienEsQuien_a1b8c88bef5056bdd366810d180d29d94}{}\label{classQuienEsQuien_a1b8c88bef5056bdd366810d180d29d94}
+
+\begin{DoxyCompactList}\small\item\em Escribe el arbol generado en la salida estandard. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_a010586f119ad0966d35c64382a64e3bc}{eliminar\+\_\+nodos\+\_\+redundantes} ()
+\begin{DoxyCompactList}\small\item\em M閠odo que modifica el 醨bol de preguntas para que haya preguntas redundantes. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_a381bcd553e7c0231bb1f33e67ae3c653}{iniciar\+\_\+juego} ()
+\begin{DoxyCompactList}\small\item\em Inicializa el juego. \end{DoxyCompactList}\item 
+set$<$ string $>$ \hyperlink{classQuienEsQuien_a16816dd39d95ad489e44469f89fabbd4}{informacion\+\_\+jugada} (\hyperlink{classbintree}{bintree}$<$ \hyperlink{classPregunta}{Pregunta} $>$\+::node jugada\+\_\+actual)
+\begin{DoxyCompactList}\small\item\em Dado un estado del tablero devuelve los nombres de los personajes que a鷑 no han sido tumbados en el tablero. \end{DoxyCompactList}\item 
+int \hyperlink{classQuienEsQuien_aa6f64a35fce39e2e444473aa38f42aed}{num\+\_\+hojas} ()
+\begin{DoxyCompactList}\small\item\em Este metodo permite calcular el numero de hojas del arbol de tipo \hyperlink{classPregunta}{Pregunta} (no vale para otro tipo de arboles) \end{DoxyCompactList}\item 
+float \hyperlink{classQuienEsQuien_ae999ad6c20f9ebf6a710060b99741126}{profundidad\+\_\+promedio\+\_\+hojas} ()
+\begin{DoxyCompactList}\small\item\em Este m閠odo permite calcular la media de la profundidad de las hojas del 醨bol. Este valor representa el n鷐ero (promedio) de preguntas necesarias para adivinar cada personaje. A menor profundidad promedio, mejor soluci髇. Esta m閠rica es un indicador para evaluar la calidad de vuestra soluci髇. \end{DoxyCompactList}\item 
+float \hyperlink{classQuienEsQuien_ab04439f255fb59dcd0ed3de620c3f544}{calcular\+\_\+suma\+\_\+alturas\+\_\+hojas} (const \hyperlink{classbintree}{bintree}$<$ \hyperlink{classPregunta}{Pregunta} $>$\+::node \&nodo\+\_\+actual, float n)
+\begin{DoxyCompactList}\small\item\em Este m閠odo permite calcular la suma de las alturas de las hojas del 醨bol. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_ac0763b7ac0c24a3c54c2affaabe1f017}{tablero\+\_\+aleatorio} (int numero\+\_\+de\+\_\+personajes)
+\begin{DoxyCompactList}\small\item\em Rellena los datos del \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} con un tablero calculado aleatoriamente. \end{DoxyCompactList}\item 
+int \hyperlink{classQuienEsQuien_a677da9360d3cedb7f20eb338d52130c2}{num\+\_\+personajes\+\_\+cumplen} (int columna, vector$<$ bool $>$ personajes\+\_\+no\+\_\+tumbados)
+\begin{DoxyCompactList}\small\item\em Comprueba los personajes que cumplen un atributo. \end{DoxyCompactList}\item 
+int \hyperlink{classQuienEsQuien_ac7188ed637e851aeeec645ef6b8439e5}{decidir\+\_\+mejor\+\_\+pregunta} (vector$<$ bool $>$ atrib\+\_\+no\+\_\+usados, vector$<$ bool $>$ p\+\_\+no\+\_\+tumbados, int n)
+\begin{DoxyCompactList}\small\item\em Decide la mejor pregunta para cada nodo. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_a08bf31d9172823cbcca4ce2701793364}{crear\+\_\+nodos} (\hyperlink{classbintree}{bintree}$<$ \hyperlink{classPregunta}{Pregunta} $>$\+::node nodo)
+\begin{DoxyCompactList}\small\item\em Crea los nodos de forma recursiva. \end{DoxyCompactList}\item 
+void \hyperlink{classQuienEsQuien_a564b9a0ea964dee3faae7db450721505}{actualizar\+\_\+nodo} (const \hyperlink{classbintree}{bintree}$<$ \hyperlink{classPregunta}{Pregunta} $>$\+::node \&nodo\+\_\+actual, \hyperlink{classPregunta}{Pregunta} \&pregunta, const int n\+\_\+per, bool rama)
+\begin{DoxyCompactList}\small\item\em Actualiza la informaci髇 de cada nodo. \end{DoxyCompactList}\item 
+int \hyperlink{classQuienEsQuien_ac6923b8bce6234471467b2c502be800a}{posicion\+\_\+atributo} (string atr)
+\begin{DoxyCompactList}\small\item\em Busca la posicion del atributo que se le pasa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Amigas}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Pregunta}\hypertarget{classQuienEsQuien_a9e3d660f83d7c526c3ad18c3c39b2a9a}{}\label{classQuienEsQuien_a9e3d660f83d7c526c3ad18c3c39b2a9a}
+
+\item 
+istream \& \hyperlink{classQuienEsQuien_a2d1e36c1b1d93621e8544d645cfff44c}{operator$>$$>$} (istream \&is, \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} \&quien\+Es\+Quien)
+\begin{DoxyCompactList}\small\item\em Operador de extracci髇 de flujo. \end{DoxyCompactList}\item 
+ostream \& \hyperlink{classQuienEsQuien_a0fd056740c595bda2964d68dc262a639}{operator$<$$<$} (ostream \&os, const \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} \&quien\+Es\+Quien)
+\begin{DoxyCompactList}\small\item\em Operador de inserci髇 de flujo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripci贸n detallada}
+T.\+D.\+A. \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien}. 
+
+Conjunto de personajes con sus atributos. 
+
+\subsection{Documentaci贸n del constructor y destructor}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{Quien\+Es\+Quien(const Quien\+Es\+Quien \&quien\+Es\+Quien)}{QuienEsQuien(const QuienEsQuien &quienEsQuien)}}]{\setlength{\rightskip}{0pt plus 5cm}Quien\+Es\+Quien\+::\+Quien\+Es\+Quien (
+\begin{DoxyParamCaption}
+\item[{const {\bf Quien\+Es\+Quien} \&}]{quien\+Es\+Quien}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_a362b7513eba83170d18d98946bc01d87}{}\label{classQuienEsQuien_a362b7513eba83170d18d98946bc01d87}
+
+
+Constructor de copia. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em quien\+Es\+Quien} & \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} a copiar. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentaci贸n de las funciones miembro}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!actualizar\+\_\+nodo@{actualizar\+\_\+nodo}}
+\index{actualizar\+\_\+nodo@{actualizar\+\_\+nodo}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{actualizar\+\_\+nodo(const bintree$<$ Pregunta $>$\+::node \&nodo\+\_\+actual, Pregunta \&pregunta, const int n\+\_\+per, bool rama)}{actualizar_nodo(const bintree< Pregunta >::node &nodo_actual, Pregunta &pregunta, const int n_per, bool rama)}}]{\setlength{\rightskip}{0pt plus 5cm}void Quien\+Es\+Quien\+::actualizar\+\_\+nodo (
+\begin{DoxyParamCaption}
+\item[{const {\bf bintree}$<$ {\bf Pregunta} $>$\+::node \&}]{nodo\+\_\+actual, }
+\item[{{\bf Pregunta} \&}]{pregunta, }
+\item[{const int}]{n\+\_\+per, }
+\item[{bool}]{rama}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_a564b9a0ea964dee3faae7db450721505}{}\label{classQuienEsQuien_a564b9a0ea964dee3faae7db450721505}
+
+
+Actualiza la informaci髇 de cada nodo. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em nodo\+\_\+actual} & nodo al que se le actualiza la informaci髇 \\
+\hline
+{\em pregunta} & objeto tipo \hyperlink{classPregunta}{Pregunta} que se le asigna al nodo\+\_\+actual \\
+\hline
+{\em n\+\_\+per} & numero de personajes restantes en cada nodo \\
+\hline
+{\em rama} & indica si la rama es de \char`\"{}\+Si\char`\"{} o \char`\"{}\+No\char`\"{} dependiendo del valor true o false respectivamente \\
+\hline
+\end{DoxyParams}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!calcular\+\_\+suma\+\_\+alturas\+\_\+hojas@{calcular\+\_\+suma\+\_\+alturas\+\_\+hojas}}
+\index{calcular\+\_\+suma\+\_\+alturas\+\_\+hojas@{calcular\+\_\+suma\+\_\+alturas\+\_\+hojas}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{calcular\+\_\+suma\+\_\+alturas\+\_\+hojas(const bintree$<$ Pregunta $>$\+::node \&nodo\+\_\+actual, float n)}{calcular_suma_alturas_hojas(const bintree< Pregunta >::node &nodo_actual, float n)}}]{\setlength{\rightskip}{0pt plus 5cm}float Quien\+Es\+Quien\+::calcular\+\_\+suma\+\_\+alturas\+\_\+hojas (
+\begin{DoxyParamCaption}
+\item[{const {\bf bintree}$<$ {\bf Pregunta} $>$\+::node \&}]{nodo\+\_\+actual, }
+\item[{float}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_ab04439f255fb59dcd0ed3de620c3f544}{}\label{classQuienEsQuien_ab04439f255fb59dcd0ed3de620c3f544}
+
+
+Este m閠odo permite calcular la suma de las alturas de las hojas del 醨bol. 
+
+\begin{DoxyReturn}{Devuelve}
+Suma de las alturas de las hojas.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondici贸n}
+El arbol de preguntas debe haber sido construido previamente. 
+\end{DoxyPrecond}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!crear\+\_\+nodos@{crear\+\_\+nodos}}
+\index{crear\+\_\+nodos@{crear\+\_\+nodos}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{crear\+\_\+nodos(bintree$<$ Pregunta $>$\+::node nodo)}{crear_nodos(bintree< Pregunta >::node nodo)}}]{\setlength{\rightskip}{0pt plus 5cm}void Quien\+Es\+Quien\+::crear\+\_\+nodos (
+\begin{DoxyParamCaption}
+\item[{{\bf bintree}$<$ {\bf Pregunta} $>$\+::node}]{nodo}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_a08bf31d9172823cbcca4ce2701793364}{}\label{classQuienEsQuien_a08bf31d9172823cbcca4ce2701793364}
+
+
+Crea los nodos de forma recursiva. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em nodo} & Nodo ya creado y se le asigna a ese nodo la informaci髇 correspondiente \\
+\hline
+\end{DoxyParams}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!decidir\+\_\+mejor\+\_\+pregunta@{decidir\+\_\+mejor\+\_\+pregunta}}
+\index{decidir\+\_\+mejor\+\_\+pregunta@{decidir\+\_\+mejor\+\_\+pregunta}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{decidir\+\_\+mejor\+\_\+pregunta(vector$<$ bool $>$ atrib\+\_\+no\+\_\+usados, vector$<$ bool $>$ p\+\_\+no\+\_\+tumbados, int n)}{decidir_mejor_pregunta(vector< bool > atrib_no_usados, vector< bool > p_no_tumbados, int n)}}]{\setlength{\rightskip}{0pt plus 5cm}int Quien\+Es\+Quien\+::decidir\+\_\+mejor\+\_\+pregunta (
+\begin{DoxyParamCaption}
+\item[{vector$<$ bool $>$}]{atrib\+\_\+no\+\_\+usados, }
+\item[{vector$<$ bool $>$}]{p\+\_\+no\+\_\+tumbados, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_ac7188ed637e851aeeec645ef6b8439e5}{}\label{classQuienEsQuien_ac7188ed637e851aeeec645ef6b8439e5}
+
+
+Decide la mejor pregunta para cada nodo. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em atrib\+\_\+no\+\_\+usados} & vector de atributos no usados \\
+\hline
+{\em p\+\_\+no\+\_\+tumbados} & vector de personajes no tumbados \\
+\hline
+{\em n} & numero de personajes restantes en cada nodo\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+posicion del atributo correspondiente a la mejor pregunta 
+\end{DoxyReturn}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!eliminar\+\_\+nodos\+\_\+redundantes@{eliminar\+\_\+nodos\+\_\+redundantes}}
+\index{eliminar\+\_\+nodos\+\_\+redundantes@{eliminar\+\_\+nodos\+\_\+redundantes}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{eliminar\+\_\+nodos\+\_\+redundantes()}{eliminar_nodos_redundantes()}}]{\setlength{\rightskip}{0pt plus 5cm}void Quien\+Es\+Quien\+::eliminar\+\_\+nodos\+\_\+redundantes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_a010586f119ad0966d35c64382a64e3bc}{}\label{classQuienEsQuien_a010586f119ad0966d35c64382a64e3bc}
+
+
+M閠odo que modifica el 醨bol de preguntas para que haya preguntas redundantes. 
+
+\begin{DoxyPostcond}{Postcondici贸n}
+El 醨bol de preguntas se modifica. 
+\end{DoxyPostcond}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!informacion\+\_\+jugada@{informacion\+\_\+jugada}}
+\index{informacion\+\_\+jugada@{informacion\+\_\+jugada}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{informacion\+\_\+jugada(bintree$<$ Pregunta $>$\+::node jugada\+\_\+actual)}{informacion_jugada(bintree< Pregunta >::node jugada_actual)}}]{\setlength{\rightskip}{0pt plus 5cm}set$<$string$>$ Quien\+Es\+Quien\+::informacion\+\_\+jugada (
+\begin{DoxyParamCaption}
+\item[{{\bf bintree}$<$ {\bf Pregunta} $>$\+::node}]{jugada\+\_\+actual}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_a16816dd39d95ad489e44469f89fabbd4}{}\label{classQuienEsQuien_a16816dd39d95ad489e44469f89fabbd4}
+
+
+Dado un estado del tablero devuelve los nombres de los personajes que a鷑 no han sido tumbados en el tablero. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em jugada\+\_\+actual} & Nodo del estado del tablero.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Conjunto de personajes que no han sido tumbados en el tablero.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondici贸n}
+El arbol del \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} receptor debe haber sido construido previamente. 
+
+El nodo indicado debe ser un nodo del arbol del \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} receptor. 
+\end{DoxyPrecond}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!iniciar\+\_\+juego@{iniciar\+\_\+juego}}
+\index{iniciar\+\_\+juego@{iniciar\+\_\+juego}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{iniciar\+\_\+juego()}{iniciar_juego()}}]{\setlength{\rightskip}{0pt plus 5cm}void Quien\+Es\+Quien\+::iniciar\+\_\+juego (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_a381bcd553e7c0231bb1f33e67ae3c653}{}\label{classQuienEsQuien_a381bcd553e7c0231bb1f33e67ae3c653}
+
+
+Inicializa el juego. 
+
+\begin{DoxyPostcond}{Postcondici贸n}
+Si la partida anterior no hab韆 terminado se pierde el progreso. 
+\end{DoxyPostcond}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!num\+\_\+hojas@{num\+\_\+hojas}}
+\index{num\+\_\+hojas@{num\+\_\+hojas}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{num\+\_\+hojas()}{num_hojas()}}]{\setlength{\rightskip}{0pt plus 5cm}int Quien\+Es\+Quien\+::num\+\_\+hojas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_aa6f64a35fce39e2e444473aa38f42aed}{}\label{classQuienEsQuien_aa6f64a35fce39e2e444473aa38f42aed}
+
+
+Este metodo permite calcular el numero de hojas del arbol de tipo \hyperlink{classPregunta}{Pregunta} (no vale para otro tipo de arboles) 
+
+\begin{DoxyReturn}{Devuelve}
+Numero de hojas del arbol de preguntas
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondici贸n}
+El arbol no debe ser nulo 
+\end{DoxyPrecond}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!num\+\_\+personajes\+\_\+cumplen@{num\+\_\+personajes\+\_\+cumplen}}
+\index{num\+\_\+personajes\+\_\+cumplen@{num\+\_\+personajes\+\_\+cumplen}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{num\+\_\+personajes\+\_\+cumplen(int columna, vector$<$ bool $>$ personajes\+\_\+no\+\_\+tumbados)}{num_personajes_cumplen(int columna, vector< bool > personajes_no_tumbados)}}]{\setlength{\rightskip}{0pt plus 5cm}int Quien\+Es\+Quien\+::num\+\_\+personajes\+\_\+cumplen (
+\begin{DoxyParamCaption}
+\item[{int}]{columna, }
+\item[{vector$<$ bool $>$}]{personajes\+\_\+no\+\_\+tumbados}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_a677da9360d3cedb7f20eb338d52130c2}{}\label{classQuienEsQuien_a677da9360d3cedb7f20eb338d52130c2}
+
+
+Comprueba los personajes que cumplen un atributo. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em columna} & numero de la columna del atributo de ese nodo \\
+\hline
+{\em personajes\+\_\+no\+\_\+tumbados} & vector de personajes no tumbados de ese nodo\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+numero de personajes que cumplen ese atributo 
+\end{DoxyReturn}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!operator=@{operator=}}
+\index{operator=@{operator=}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{operator=(const Quien\+Es\+Quien \&quien\+Es\+Quien)}{operator=(const QuienEsQuien &quienEsQuien)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Quien\+Es\+Quien}\& Quien\+Es\+Quien\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Quien\+Es\+Quien} \&}]{quien\+Es\+Quien}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_ae7a4139787934cca03996687460935dd}{}\label{classQuienEsQuien_ae7a4139787934cca03996687460935dd}
+
+
+Sobrecarga del operador de asignaci髇. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em quien\+Es\+Quien} & objeto a copiar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia al objeto copiado. 
+\end{DoxyReturn}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!posicion\+\_\+atributo@{posicion\+\_\+atributo}}
+\index{posicion\+\_\+atributo@{posicion\+\_\+atributo}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{posicion\+\_\+atributo(string atr)}{posicion_atributo(string atr)}}]{\setlength{\rightskip}{0pt plus 5cm}int Quien\+Es\+Quien\+::posicion\+\_\+atributo (
+\begin{DoxyParamCaption}
+\item[{string}]{atr}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_ac6923b8bce6234471467b2c502be800a}{}\label{classQuienEsQuien_ac6923b8bce6234471467b2c502be800a}
+
+
+Busca la posicion del atributo que se le pasa. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em atr} & Atributo del que queremos conocer su posici髇 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+posicion del atributo pedido 
+\end{DoxyReturn}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!profundidad\+\_\+promedio\+\_\+hojas@{profundidad\+\_\+promedio\+\_\+hojas}}
+\index{profundidad\+\_\+promedio\+\_\+hojas@{profundidad\+\_\+promedio\+\_\+hojas}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{profundidad\+\_\+promedio\+\_\+hojas()}{profundidad_promedio_hojas()}}]{\setlength{\rightskip}{0pt plus 5cm}float Quien\+Es\+Quien\+::profundidad\+\_\+promedio\+\_\+hojas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_ae999ad6c20f9ebf6a710060b99741126}{}\label{classQuienEsQuien_ae999ad6c20f9ebf6a710060b99741126}
+
+
+Este m閠odo permite calcular la media de la profundidad de las hojas del 醨bol. Este valor representa el n鷐ero (promedio) de preguntas necesarias para adivinar cada personaje. A menor profundidad promedio, mejor soluci髇. Esta m閠rica es un indicador para evaluar la calidad de vuestra soluci髇. 
+
+\begin{DoxyReturn}{Devuelve}
+Profundidad media del arbol de preguntas.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondici贸n}
+El arbol de preguntas debe haber sido construido previamente. 
+\end{DoxyPrecond}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!tablero\+\_\+aleatorio@{tablero\+\_\+aleatorio}}
+\index{tablero\+\_\+aleatorio@{tablero\+\_\+aleatorio}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{tablero\+\_\+aleatorio(int numero\+\_\+de\+\_\+personajes)}{tablero_aleatorio(int numero_de_personajes)}}]{\setlength{\rightskip}{0pt plus 5cm}void Quien\+Es\+Quien\+::tablero\+\_\+aleatorio (
+\begin{DoxyParamCaption}
+\item[{int}]{numero\+\_\+de\+\_\+personajes}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_ac0763b7ac0c24a3c54c2affaabe1f017}{}\label{classQuienEsQuien_ac0763b7ac0c24a3c54c2affaabe1f017}
+
+
+Rellena los datos del \hyperlink{classQuienEsQuien}{Quien\+Es\+Quien} con un tablero calculado aleatoriamente. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em numero\+\_\+de\+\_\+personajes} & N鷐ero de personajes que tiene el tablero a crear. \\
+\hline
+\end{DoxyParams}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!usar\+\_\+arbol@{usar\+\_\+arbol}}
+\index{usar\+\_\+arbol@{usar\+\_\+arbol}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{usar\+\_\+arbol(bintree$<$ Pregunta $>$ arbol\+\_\+nuevo)}{usar_arbol(bintree< Pregunta > arbol_nuevo)}}]{\setlength{\rightskip}{0pt plus 5cm}void Quien\+Es\+Quien\+::usar\+\_\+arbol (
+\begin{DoxyParamCaption}
+\item[{{\bf bintree}$<$ {\bf Pregunta} $>$}]{arbol\+\_\+nuevo}
+\end{DoxyParamCaption}
+)}\hypertarget{classQuienEsQuien_a0949bd026c2beeaacbf36fd0ba6fc3a9}{}\label{classQuienEsQuien_a0949bd026c2beeaacbf36fd0ba6fc3a9}
+
+
+Sustituye el 醨bol actual por el 醨bol pasado por par醡etro. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em arbol\+\_\+nuevo} & Arbol de preguntas que sustituye al actual. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentaci贸n de las funciones relacionadas y clases amigas}
+\index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{os, }
+\item[{const {\bf Quien\+Es\+Quien} \&}]{quien\+Es\+Quien}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classQuienEsQuien_a0fd056740c595bda2964d68dc262a639}{}\label{classQuienEsQuien_a0fd056740c595bda2964d68dc262a639}
+
+
+Operador de inserci髇 de flujo. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em os} & Stream de salida \\
+\hline
+{\em quien\+Es\+Quien} & Quien es quien a escribir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia al stream de salida.
+\end{DoxyReturn}
+Escribe en {\itshape is} un quien es quien. El formato usado para la escritura es un T\+SV (tab-\/separated values) en el que las columnas tienen cabecera y son las preguntas. La 鷏tima columna corresponde al nombre del personaje. Tras la cabecera se especifica en cada l韓ea un personaje, teniendo el valor 1 o 0 si tiene/no tiene el atributo de la columna. En la 鷏tima columna se da el nombre del personaje. \index{Quien\+Es\+Quien@{Quien\+Es\+Quien}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Quien\+Es\+Quien@{Quien\+Es\+Quien}}
+\subsubsection[{\texorpdfstring{operator$>$$>$}{operator>>}}]{\setlength{\rightskip}{0pt plus 5cm}istream\& operator$>$$>$ (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{is, }
+\item[{{\bf Quien\+Es\+Quien} \&}]{quien\+Es\+Quien}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classQuienEsQuien_a2d1e36c1b1d93621e8544d645cfff44c}{}\label{classQuienEsQuien_a2d1e36c1b1d93621e8544d645cfff44c}
+
+
+Operador de extracci髇 de flujo. 
+
+
+\begin{DoxyParams}{Par谩metros}
+{\em is} & Stream de entrada \\
+\hline
+{\em quien\+Es\+Quien} & Quien es quien a leer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Referencia al stream de entrada.
+\end{DoxyReturn}
+Lee de {\itshape is} un quien es quien y lo almacena en {\itshape quien\+Es\+Quien}. El formato aceptado para la lectura es un T\+SV (tab-\/separated values) en el que las columnas tienen cabecera y son las preguntas. La 鷏tima columna corresponde al nombre del personaje. Tras la cabecera se especifica en cada l韓ea un personaje, teniendo el valor 1 o 0 si tiene/no tiene el atributo de la columna. En la 鷏tima columna se da el nombre del personaje. 
+
+La documentaci贸n para esta clase fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{quienesquien_8h}{quienesquien.\+h}\end{DoxyCompactItemize}
