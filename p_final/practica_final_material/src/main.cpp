@@ -71,11 +71,15 @@ int main(int argc, char * argv[]){
 		cout << "\tGenerar aleatorio:   ./bin/quienesquien aleatorio"<< endl;
 		return 1;
 	}
-
-	quienEsQuien.mostrar_estructuras_leidas();
-
 	//quienEsQuien.usar_arbol(quienEsQuien.crear_arbol());
 	quienEsQuien.crear_arbol();
+
+	vector<bool> caracteristicas = {1,1,0,1};
+	
+	//quienEsQuien.aniade_personaje("Laura", caracteristicas);
+	quienEsQuien.elimina_personaje("Ernesto");
+
+	quienEsQuien.mostrar_estructuras_leidas();
 
 	cout << "=========== Arbol en crudo ===========" << endl;
 	quienEsQuien.escribir_arbol_completo();

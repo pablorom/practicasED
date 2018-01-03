@@ -161,7 +161,7 @@ ostream& operator << (ostream& os, const QuienEsQuien &quienEsQuien){
 	}
 	os << "Nombre personaje" << endl;
 
-	//Rellenamos con ceros y unos cada lÌnea y al final ponemos el nombre del personaje.
+	//Rellenamos con ceros y unos cada l√≠nea y al final ponemos el nombre del personaje.
 	for(int indice_personaje=0;indice_personaje<quienEsQuien.personajes.size();indice_personaje++){
 		for(int indice_atributo=0;indice_atributo<quienEsQuien.atributos.size();indice_atributo++){
 
@@ -174,15 +174,15 @@ ostream& operator << (ostream& os, const QuienEsQuien &quienEsQuien){
 }
 
 /**
-  * @brief Convierte un n˙mero a un vector de bool que corresponde 
-  *        con su representaciÛn en binario con un numero de digitos
+  * @brief Convierte un n√∫mero a un vector de bool que corresponde 
+  *        con su representaci√≥n en binario con un numero de digitos
   *        fijo.
   *
-  * @param n N˙mero a convertir en binario.
-  * @param digitos N˙mero de dÌgitos de la representaciÛn binaria.
+  * @param n N√∫mero a convertir en binario.
+  * @param digitos N√∫mero de d√≠gitos de la representaci√≥n binaria.
   *
-  * @return Vector de booleanos con la representaciÛn en binario de @e n 
-  *      con el n˙mero de elementos especificado por @e digitos. 
+  * @return Vector de booleanos con la representaci√≥n en binario de @e n 
+  *      con el n√∫mero de elementos especificado por @e digitos. 
 
   */
 vector<bool> convertir_a_vector_bool(int n, int digitos) {
@@ -254,7 +254,7 @@ void QuienEsQuien::iniciar_juego(){
 	nodo_act = arbol.root();
 
 	while((*nodo_act).num_personajes != 1){
-		cout << "øEs " << (*nodo_act).atributo << "?" << endl;
+		cout << "¬øEs " << (*nodo_act).atributo << "?" << endl;
 		do{
 			cin >> opcion;
 			opcion = toupper(opcion);
@@ -376,7 +376,7 @@ void QuienEsQuien::tablero_aleatorio(int numero_de_personajes){
 
 	int numero_de_atributos = ceil(log_2_numero_de_personajes);
 
-	cout << "PeticiÛn para generar "<< numero_de_personajes<<" personajes ";
+	cout << "Petici√≥n para generar "<< numero_de_personajes<<" personajes ";
 	cout << "con "<<numero_de_atributos<< " atributos"<<endl;
 	cout << "Paso 1: generar "<< pow(2,numero_de_atributos) << " personajes"<<endl;
 
@@ -449,6 +449,19 @@ int QuienEsQuien::posicion_atributo(string atr){
 	return pos;
 }
 
+int QuienEsQuien::posicion_personaje(string atr){
+	int pos;
+	bool encontrado = false;
+	for (int i = 0; i < this->personajes.size() && !encontrado; i++){
+		if(this->personajes[i] == atr){
+			encontrado = true;
+			pos = i;
+		}
+	}	
+	assert(encontrado == true);
+	return pos;
+}
+
 void QuienEsQuien::actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, Pregunta & pregunta, const int n_per, bool rama){
 	
 	//Actualizamos atrib_no_usados del nuevo nodo
@@ -489,18 +502,7 @@ void QuienEsQuien::actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, 
 		}
 		assert(encontrado == true);
 		pregunta.atributo = personajes[pos];
-	}
-
-	cout << "INFORMACION DE JUGADA: " << endl;
-	set<string>::iterator it;
-	for(it = (informacion_jugada(nodo_actual)).begin(); it != (informacion_jugada(nodo_actual)).end(); it++){
-		cout << *it;
-	}
-	cout << "PREGUNTAS FORMULADAS: " << endl;
-	for(it = (preguntas_formuladas(nodo_actual)).begin(); it != (preguntas_formuladas(nodo_actual)).end(); it++){
-		cout << *it;
-	}
-	
+	}	
 }
 
 //FUNCION RECURSIVA
@@ -540,6 +542,108 @@ void QuienEsQuien::crear_nodos(bintree<Pregunta>::node nodo){
 		crear_nodos(nodo.left());
 	if(dcha != 1)
 		crear_nodos(nodo.right());
+}
+
+void QuienEsQuien::preguntas_formuladas(bintree<Pregunta>::node jugada){
+	//Consultamos los atributos usados hasta el momento
+	bintree<Pregunta>::node tmp = jugada;
+	cout << "El personaje oculto tiene las siguientes caracter√≠sticas: " << endl;
+	if(jugada != arbol.root()){
+		do{
+			if(jugada == (jugada.parent().left())){
+				cout << (*jugada.parent()).atributo << ": SI" << endl;
+			}else{
+				cout << (*jugada.parent()).atributo << ": NO" << endl;
+			}
+			jugada = jugada.parent();
+		}while(jugada!=arbol.root());
+		if((*tmp).num_personajes != 1)
+			cout << "pero a√∫n no se cual es." << endl;
+	}
+}
+
+void QuienEsQuien::aniade_personaje(string nombre, vector<bool> caracteristicas){
+	bintree<Pregunta>::node nodo = arbol.root();
+	while((*nodo).num_personajes != 1){
+		(*nodo).num_personajes++;
+		//En cada nodo a√±adimos un booleano true en el vector personajes_no_tumbados que representa al nuevo personaje.
+		//No ser√≠a necesario en las ramas por las que no pasemos.
+		(*nodo).personajes_no_tumbados.push_back(true);
+		if(caracteristicas[posicion_atributo(((*nodo).atributo))])
+			nodo = nodo.left();
+		else
+			nodo = nodo.right();
+	}
+	//Guardamos el personaje de la hoja a la que llegamos
+	Pregunta preg;
+	preg.num_personajes = 1;
+	preg.atributo = (*nodo).atributo;
+	preg.personajes_no_tumbados = (*nodo).personajes_no_tumbados;
+	preg.atrib_no_usados = (*nodo).atrib_no_usados;
+	bintree<Pregunta>::node tmp(preg);
+	//Miramos el atributo en el que difieren
+	for (int i = 0; i < caracteristicas.size(); i++){
+		if(caracteristicas[i] != tablero[posicion_personaje((*tmp).atributo)][i]){
+			(*nodo).atributo = atributos[i];
+			(*nodo).atrib_no_usados[i] = false;
+		}
+	}
+	(*nodo).num_personajes = 2;
+
+	Pregunta nueva;
+	nueva = (*tmp);
+	nueva.atributo = nombre;
+	nueva.personajes_no_tumbados[posicion_personaje((*tmp).atributo)] = false;
+	if(caracteristicas[posicion_atributo((*nodo).atributo)] == 1){
+		arbol.insert_left(nodo,nueva);
+		arbol.insert_right(nodo,(*tmp));
+	}else{
+		arbol.insert_left(nodo,(*tmp));
+		arbol.insert_right(nodo,nueva);
+	}
+}
+
+void QuienEsQuien::elimina_personaje(string nombre){
+	vector<bool> caracteristicas = tablero[posicion_personaje(nombre)];
+	bintree<Pregunta>::node nodo = arbol.root();
+	while((*nodo).num_personajes != 1){
+		(*nodo).num_personajes--;
+		//En cada nodo a√±adimos un booleano true en el vector personajes_no_tumbados que representa al nuevo personaje.
+		//No ser√≠a necesario en las ramas por las que no pasemos.
+		(*nodo).personajes_no_tumbados[posicion_personaje(nombre)] = false;
+		if(caracteristicas[posicion_atributo(((*nodo).atributo))])
+			nodo = nodo.left();
+		else
+			nodo = nodo.right();
+	}
+	//Eliminamos de tablero y de los vectores
+	tablero.erase(tablero.begin() + posicion_personaje(nombre));
+	atributos.erase(atributos.begin() + posicion_personaje(nombre));
+	personajes.erase(personajes.begin() + posicion_personaje(nombre));
 	
+	if(nodo.parent().right() == nodo){ //Si es el hijo derecho
+		nodo = nodo.parent();
+		bintree<Pregunta> subarbol;
+		subarbol.assign_subtree(arbol, nodo.left());
+		arbol.prune_right(nodo, subarbol);
+		arbol.replace_subtree(nodo, arbol, nodo.left());
+	}else{
+		//Se elimina el nodo deseado
+		nodo = nodo.parent();
+		bintree<Pregunta> subarbol;
+		subarbol.assign_subtree(arbol, nodo.right());
+		arbol.prune_left(nodo, subarbol);
+
+		//Se reemplaza el padre por el otro nodo y lo que le cuelgue
+		bintree<Pregunta> sustituto;
+		sustituto.assign_subtree(arbol, nodo.right());
+		cout << "ATRIB NODO: "<<(*nodo).atributo << endl;
+		cout << "ATRIB RIGHT: "<<(*(nodo.right())).atributo << endl;
+		arbol.replace_subtree(nodo, arbol, sustituto.root());
+		cout << "ATRIB NODO: "<<(*nodo).atributo << endl;
+		cout << "ATRIB PADRE NODO: " << (*(nodo.parent())).atributo << endl;
+	}
+
+	escribir_arbol_completo();
 	
 }
