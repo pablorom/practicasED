@@ -161,7 +161,7 @@ ostream& operator << (ostream& os, const QuienEsQuien &quienEsQuien){
 	}
 	os << "Nombre personaje" << endl;
 
-	//Rellenamos con ceros y unos cada lÃ­nea y al final ponemos el nombre del personaje.
+	//Rellenamos con ceros y unos cada línea y al final ponemos el nombre del personaje.
 	for(int indice_personaje=0;indice_personaje<quienEsQuien.personajes.size();indice_personaje++){
 		for(int indice_atributo=0;indice_atributo<quienEsQuien.atributos.size();indice_atributo++){
 
@@ -174,15 +174,15 @@ ostream& operator << (ostream& os, const QuienEsQuien &quienEsQuien){
 }
 
 /**
-  * @brief Convierte un nÃºmero a un vector de bool que corresponde 
-  *        con su representaciÃ³n en binario con un numero de digitos
+  * @brief Convierte un número a un vector de bool que corresponde 
+  *        con su representación en binario con un numero de digitos
   *        fijo.
   *
-  * @param n NÃºmero a convertir en binario.
-  * @param digitos NÃºmero de dÃ­gitos de la representaciÃ³n binaria.
+  * @param n Número a convertir en binario.
+  * @param digitos Número de dígitos de la representación binaria.
   *
-  * @return Vector de booleanos con la representaciÃ³n en binario de @e n 
-  *      con el nÃºmero de elementos especificado por @e digitos. 
+  * @return Vector de booleanos con la representación en binario de @e n 
+  *      con el número de elementos especificado por @e digitos. 
 
   */
 vector<bool> convertir_a_vector_bool(int n, int digitos) {
@@ -254,7 +254,7 @@ void QuienEsQuien::iniciar_juego(){
 	nodo_act = arbol.root();
 
 	while((*nodo_act).num_personajes != 1){
-		cout << "Â¿Es " << (*nodo_act).atributo << "?" << endl;
+		cout << "¿Es " << (*nodo_act).atributo << "?" << endl;
 		do{
 			cin >> opcion;
 			opcion = toupper(opcion);
@@ -376,7 +376,7 @@ void QuienEsQuien::tablero_aleatorio(int numero_de_personajes){
 
 	int numero_de_atributos = ceil(log_2_numero_de_personajes);
 
-	cout << "PeticiÃ³n para generar "<< numero_de_personajes<<" personajes ";
+	cout << "Petición para generar "<< numero_de_personajes<<" personajes ";
 	cout << "con "<<numero_de_atributos<< " atributos"<<endl;
 	cout << "Paso 1: generar "<< pow(2,numero_de_atributos) << " personajes"<<endl;
 
@@ -490,6 +490,17 @@ void QuienEsQuien::actualizar_nodo(const bintree<Pregunta>::node & nodo_actual, 
 		assert(encontrado == true);
 		pregunta.atributo = personajes[pos];
 	}
+
+	cout << "INFORMACION DE JUGADA: " << endl;
+	set<string>::iterator it;
+	for(it = (informacion_jugada(nodo_actual)).begin(); it != (informacion_jugada(nodo_actual)).end(); it++){
+		cout << *it;
+	}
+	cout << "PREGUNTAS FORMULADAS: " << endl;
+	for(it = (preguntas_formuladas(nodo_actual)).begin(); it != (preguntas_formuladas(nodo_actual)).end(); it++){
+		cout << *it;
+	}
+	
 }
 
 //FUNCION RECURSIVA
@@ -510,9 +521,12 @@ void QuienEsQuien::crear_nodos(bintree<Pregunta>::node nodo){
 	}
 	dcha = total - izda;
 
+
 	Pregunta preg_izda, preg_dcha;
 
 	bintree<Pregunta>::node nodo_izda(preg_izda), nodo_dcha(preg_dcha);
+
+
 
 	//CAMBIAR IMPLEMENTACION
 	actualizar_nodo(nodo, preg_izda, izda, true);
@@ -526,17 +540,6 @@ void QuienEsQuien::crear_nodos(bintree<Pregunta>::node nodo){
 		crear_nodos(nodo.left());
 	if(dcha != 1)
 		crear_nodos(nodo.right());
-}
-
-void QuienEsQuien::preguntas_formuladasâ€‹(bintree<Pregunta>::nodeâ€‹â€‹ jugada){
-	//Consultamos los atributos usados hasta el momento
-	cout << "El personaje oculto tiene las siguientes caracterÃ­sticas: " << endl;
-	for (int i = 0; i < (*jugada).atrib_no_usados.size(); i++){
-		if((*jugada).atrib_no_usados[i] == 0){
-			cout << atributos[i] << ": no" << endl;
-		}else{
-			cout << atributos[i] << ": si" << endl;
-		}
-	}
-	cout << "pero aÃºn no se cual es." << endl;
+	
+	
 }
