@@ -603,9 +603,15 @@ void QuienEsQuien::aniade_personaje(string nombre, vector<bool> caracteristicas)
 	}
 }
 
+
+//Este metodo permite eliminar un personaje.
 void QuienEsQuien::elimina_personaje(string nombre){
-	vector<bool> caracteristicas = tablero[posicion_personaje(nombre)];
+	
+	vector<bool> caracteristicas = tablero[posicion_personaje(nombre)];	
 	bintree<Pregunta>::node nodo = arbol.root();
+	//Si solo hay un personaje no lo elimina
+	assert((*nodo).num_personajes != 1);
+
 	while((*nodo).num_personajes != 1){
 		(*nodo).num_personajes--;
 		//En cada nodo añadimos un booleano true en el vector personajes_no_tumbados que representa al nuevo personaje.
@@ -616,34 +622,51 @@ void QuienEsQuien::elimina_personaje(string nombre){
 		else
 			nodo = nodo.right();
 	}
-	//Eliminamos de tablero y de los vectores
+
+	//Eliminamos de tablero y del vector personajes
 	tablero.erase(tablero.begin() + posicion_personaje(nombre));
-	atributos.erase(atributos.begin() + posicion_personaje(nombre));
 	personajes.erase(personajes.begin() + posicion_personaje(nombre));
 	
+	//Sustituto del padre
+	bintree<Pregunta> sustituto;
+
 	if(nodo.parent().right() == nodo){ //Si es el hijo derecho
 		nodo = nodo.parent();
+
 		bintree<Pregunta> subarbol;
 		subarbol.assign_subtree(arbol, nodo.left());
 		arbol.prune_right(nodo, subarbol);
-		arbol.replace_subtree(nodo, arbol, nodo.left());
+		//arbol.replace_subtree(nodo, arbol, nodo.left());
+
+		//Se reemplaza el padre por el otro nodo y lo que le cuelgue
+		sustituto.assign_subtree(arbol, nodo.left());
+
 	}else{
 		//Se elimina el nodo deseado
 		nodo = nodo.parent();
+
 		bintree<Pregunta> subarbol;
 		subarbol.assign_subtree(arbol, nodo.right());
 		arbol.prune_left(nodo, subarbol);
 
 		//Se reemplaza el padre por el otro nodo y lo que le cuelgue
-		bintree<Pregunta> sustituto;
 		sustituto.assign_subtree(arbol, nodo.right());
-		cout << "ATRIB NODO: "<<(*nodo).atributo << endl;
-		cout << "ATRIB RIGHT: "<<(*(nodo.right())).atributo << endl;
-		arbol.replace_subtree(nodo, arbol, sustituto.root());
-		cout << "ATRIB NODO: "<<(*nodo).atributo << endl;
-		cout << "ATRIB PADRE NODO: " << (*(nodo.parent())).atributo << endl;
 	}
 
-	escribir_arbol_completo();
-	
+	//Si el que vamos a sustituir no es la raiz
+	if(nodo != arbol.root()){
+		//Comprobamos si el nodo que queremos reemplazar es izquierda o derecha
+		if(nodo.parent().right() == nodo){
+			//subimos al abuelo
+			nodo = nodo.parent();
+			arbol.insert_right(nodo, sustituto);
+		}else{
+			//subimos al abuelo
+			nodo = nodo.parent();
+			arbol.insert_left(nodo, sustituto);	
+		}
+	}else{
+		nodo = arbol.root();
+		arbol.replace_subtree(nodo, sustituto, sustituto.root());
+	}
 }

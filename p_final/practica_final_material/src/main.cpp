@@ -77,7 +77,6 @@ int main(int argc, char * argv[]){
 	vector<bool> caracteristicas = {1,1,0,1};
 	
 	//quienEsQuien.aniade_personaje("Laura", caracteristicas);
-	quienEsQuien.elimina_personaje("Ernesto");
 
 	quienEsQuien.mostrar_estructuras_leidas();
 
