@@ -48,7 +48,7 @@ int main(int argc, char * argv[]){
 			f>> quienEsQuien;
 			jugar = true;
 		}
-	}/* else if(argc == 3 ){
+	} else if(argc == 3 ){
 		string parametroLimpiar = "limpiar";
 		if(parametroLimpiar== argv[2]){
 			cout << "Cargando fichero para limpiar (sin jugar) '"<< argv[1] <<"'"<< endl;
@@ -64,7 +64,7 @@ int main(int argc, char * argv[]){
 			return 1;
 		}
 
-	}*/ else {
+	} else {
 		cout << "No se reconocen los argumentos. Ejemplos de uso:" << endl;
 		cout << "\tJugar:               ./bin/quienesquien RUTA_FICHERO"<< endl;
 		cout << "\tLimpiar sin jugar:   ./bin/quienesquien RUTA_FICHERO limpiar"<< endl;
@@ -75,8 +75,10 @@ int main(int argc, char * argv[]){
 	quienEsQuien.crear_arbol();
 
 	vector<bool> caracteristicas = {1,1,0,1};
-	
+
 	//quienEsQuien.aniade_personaje("Laura", caracteristicas);
+
+	//quienEsQuien.elimina_personaje("Pilar");
 
 	quienEsQuien.mostrar_estructuras_leidas();
 

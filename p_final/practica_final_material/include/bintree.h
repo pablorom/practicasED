@@ -239,6 +239,7 @@ public:
     node elnodo;
     preorder_iterator(node n);
     friend class bintree<T>;
+    friend class QuienEsQuien;
   };
 
   preorder_iterator begin_preorder();

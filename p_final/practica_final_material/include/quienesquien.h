@@ -169,7 +169,7 @@ public:
 	  * @pre El arbol del QuienEsQuien receptor debe haber sido construido previamente.
 	  * @pre El nodo indicado debe ser un nodo del arbol del QuienEsQuien receptor.
 	  */
-	set<string> informacion_jugada(bintree<Pregunta>::node jugada_actual);
+	set<string> informacion_jugada(const bintree<Pregunta>::node &jugada_actual)const;
 	
 
 	/**
@@ -256,12 +256,33 @@ public:
 	  */
 	int posicion_atributo(string atr);
 
+
+	/**
+	* @brief Resume las preguntas realizadas con sus respuestas hasta el nodo actual
+	* @param jugada nodo en el que se encuentra la partida
+	*
+	*/
 	void preguntas_formuladas(bintree<Pregunta>::node jugada);
 
-	int posicion_personaje(string atr);
+	/**
+	* @brief Nos dice el indice del vector personajes en el que se encuentra un personaje.
+	* @param nom Nombre del personaje del que queremos saber el indice. 
+	* @pre El nombre tiene que ser de un jugador de la partida.
+	* @return devuelve el indice
+	*/
+	int posicion_personaje(string nom);
 
+	/**
+	* @brief Añade un personaje al arbol y al tablero
+	* @param nombre Nombre del personaje que añadimos. 
+	* @param caracteristicas vector de booleanos con las caracteristicas del personaje nuevo
+	*/
 	void aniade_personaje(string nombre, vector<bool> caracteristicas);
 
+	/**
+	* @brief Elimina un personaje del arbol y del tablero
+	* @param nombre Nombre del personaje que eliminamos. 
+	*/
 	void elimina_personaje(string nombre);
 
 	friend class Pregunta;
