@@ -7,11 +7,10 @@
 
 using namespace std;
 
-
 int main(int argc, char * argv[]){
 
 	bool jugar = false;
-	//bool limpiar = false;
+	bool limpiar = false;
 	QuienEsQuien quienEsQuien;
 	
 	if(argc == 2){

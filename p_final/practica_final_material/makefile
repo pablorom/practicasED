@@ -28,7 +28,6 @@ limpiarRedundante: $(BIN)/quienesquien
 aleatorio: $(BIN)/quienesquien
 	$(BIN)/quienesquien aleatorio
 
-
 # ************ Generación de documentación ******************
 documentacion: $(SRC)/main.cpp $(SRC)/pregunta.cpp $(SRC)/quienesquien.cpp $(INC)/pregunta.h $(INC)/quienesquien.h
 	doxygen doc/doxys/Doxyfile
